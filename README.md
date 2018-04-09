@@ -23,7 +23,8 @@
 ```
 1.配置generatorConfig.xml生成实体的表名
 2.右键项目-->Maven build
-3.配置指令：mybatis-generator:generate，Run~
+3.配置指令：mybatis-generator:generate
+4.Run运行
 ```
 
 ### 2.Maven运行项目
