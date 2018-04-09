@@ -45,7 +45,7 @@
 			<aop:advisor advice-ref="advice" pointcut-ref="crudPointCut"/>
 		</aop:config>
 		<!-- 开启注解扫描
-		<context:component-scan base-package="com._520it.crm"/> -->
+		<context:component-scan base-package="com.tangerineSpecter.crm"/> -->
 		<!-- 有扫描器扫描mapper接口 -->
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 			<property name="basePackage" value="com.tangerineSpecter.crm.mapper"></property>
