@@ -68,15 +68,30 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 </style>
 <script src="js/prefixfree.min.js"></script>
+<script type="text/javascript" src="/js/jquery-easyui/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).keyup(function(event){
+		if(event.keyCode == 13){
+			submitForm();
+		}
+	})
+	
+	//通过异步方式登录
+	function submitForm(){
+		console.log($("form").serialize());
+		window.href.location="/index";
+	}
+</script>
 
 </head>
 <body>
 <div class="login">
 	<h1>客户关系管理系统</h1>
 	<form method="post">
-		<input type="text" name="u" placeholder="用户名" required="required" />
-		<input type="password" name="p" placeholder="密码" required="required" />
-		<button type="submit" class="btn btn-primary btn-block btn-large">登录</button>
+		<input type="text" name="username" placeholder="用户名" required="required" />
+		<input type="password" name="password" placeholder="密码" required="required" />
+		<button type="submit" class="btn btn-primary btn-block btn-large" onclick="submitForm()">登录</button>
 	</form>
 </div>
 
