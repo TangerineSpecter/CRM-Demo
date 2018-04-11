@@ -67,7 +67,7 @@ input {
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
 
 </style>
-<script src="js/prefixfree.min.js"></script>
+<script src="/js/login/prefixfree.min.js"></script>
 <script type="text/javascript" src="/js/jquery-easyui/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -80,7 +80,14 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 	//通过异步方式登录
 	function submitForm(){
 		console.log($("form").serialize());
-		window.href.location="/index";
+		$.post("/login",$("form").serialize(),function(result){
+			if(result.success){
+				//跳转到首页			
+				window.href.location="/index";
+			}else{
+				alert(result.msg);
+			}
+		})
 	}
 </script>
 
