@@ -83,7 +83,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 		$.post("/login",$("form").serialize(),function(result){
 			if(result.success){
 				//跳转到首页			
-				window.href.location="/index";
+				window.location.href="/index";
 			}else{
 				alert(result.msg);
 			}

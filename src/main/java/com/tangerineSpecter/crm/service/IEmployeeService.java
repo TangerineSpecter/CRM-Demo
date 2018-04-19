@@ -14,4 +14,7 @@ public interface IEmployeeService {
     List<Employee> selectAll();
 
     int updateByPrimaryKey(Employee record);
+
+	Employee getEmployeeForLogin(String username, String password);
+
 }

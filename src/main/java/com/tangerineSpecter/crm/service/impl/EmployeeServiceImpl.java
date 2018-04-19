@@ -38,4 +38,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return employeeDao.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public Employee getEmployeeForLogin(String username, String password) {
+		return employeeDao.getEmployeeForLogin(username, password);
+	}
+
 }
