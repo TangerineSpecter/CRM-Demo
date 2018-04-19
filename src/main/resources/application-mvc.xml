@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
@@ -12,17 +14,28 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-		<!-- 开启注解扫描 -->
-		<context:component-scan base-package="com.tangerineSpecter.crm"/>
-		<!-- 支持注解扫描 -->
-		<mvc:annotation-driven/>
-		<!-- 配置视图解析器 加上前缀后缀 -->
-		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/views/"/>
-			<property name="suffix" value=".jsp"/>
-		</bean>
-		<!-- 静态资源处理 -->
-		<mvc:default-servlet-handler/>
-		<!-- 关联其他文件 -->
-		<import resource="classpath:application.xml"/>
+	<!-- 开启注解扫描 -->
+	<context:component-scan
+		base-package="com.tangerineSpecter.crm" />
+	<!-- 支持注解扫描 -->
+	<mvc:annotation-driven />
+	<!-- 配置视图解析器 加上前缀后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 静态资源处理 -->
+	<mvc:default-servlet-handler />
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<mvc:exclude-mapping path="/login" />
+			<bean
+				class="com.tangerineSpecter.crm.web.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!-- 关联其他文件 -->
+	<import resource="classpath:application.xml" />
 </beans>
