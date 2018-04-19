@@ -12,7 +12,7 @@ public class Employee {
 	private String username;
 	private String realname;
 	private String password;
-	private String numberPhone;
+	private String phoneNumber;
 	private String email;
 	private Department dept;
 	private Date inputTime;

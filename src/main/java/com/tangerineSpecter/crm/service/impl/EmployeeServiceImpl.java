@@ -3,11 +3,13 @@ package com.tangerineSpecter.crm.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tangerineSpecter.crm.domain.Employee;
 import com.tangerineSpecter.crm.mapper.EmployeeMapper;
 import com.tangerineSpecter.crm.service.IEmployeeService;
 
+@Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Autowired

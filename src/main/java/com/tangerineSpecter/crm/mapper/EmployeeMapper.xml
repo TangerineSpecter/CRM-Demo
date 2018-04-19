@@ -6,7 +6,7 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="realname" property="realname" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="number_phone" property="numberPhone" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="input_time" property="inputTime" jdbcType="DATE" />
     <result column="status" property="status" jdbcType="BIT" />
@@ -18,10 +18,10 @@
   </delete>
   <insert id="insert" parameterType="com.tangerineSpecter.crm.domain.Employee" useGeneratedKeys="true" keyProperty="id" >
     insert into employee (username, realname, password, 
-      number_phone, email, dept_id, 
+      phone_number, email, dept_id, 
       input_time, status, admin)
     values (#{username}, #{realname}, #{password}, 
-      #{numberPhone}, #{email}, #{dept.id}, 
+      #{phoneNumber}, #{email}, #{dept.id}, 
       #{inputTime}, #{status}, #{admin})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.tangerineSpecter.crm.domain.Employee" >
@@ -29,7 +29,7 @@
     set username = #{username},
       realname = #{realname},
       password = #{password},
-      number_phone = #{numberPhone},
+      phone_number = #{phoneNumber},
       email = #{email},
       dept_id = #{dept.id},
       input_time = #{inputTime},
@@ -38,13 +38,13 @@
     where id = #{id}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select id, username, realname, password, number_phone, email, dept_id, input_time, 
+    select id, username, realname, password, phone_number, email, dept_id, input_time, 
     status, admin
     from employee
     where id = #{id}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, username, realname, password, number_phone, email, dept_id, input_time, 
+    select id, username, realname, password, phone_number, email, dept_id, input_time, 
     status, admin
     from employee
   </select>
