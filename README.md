@@ -30,6 +30,9 @@
 ### 2.Maven运行项目
 ```
 配置指令：tomcat7:run(根据tomcat版本而定)
+
+### 3.集成lombok插件
+执行resources/lib目录中的lombok-1.16.6.jar对IDE做集成
 ```
 ## 关于
 ```
