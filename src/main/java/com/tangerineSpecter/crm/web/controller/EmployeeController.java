@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tangerineSpecter.crm.domain.Employee;
+import com.tangerineSpecter.crm.page.PageResult;
+import com.tangerineSpecter.crm.query.EmployeeQueryOjbect;
 import com.tangerineSpecter.crm.service.IEmployeeService;
 import com.tangerineSpecter.crm.util.UserContext;
 
@@ -23,6 +25,14 @@ public class EmployeeController {
 	@RequestMapping("/employee")
 	public String index() {
 		return "employee";
+	}
+
+	@ResponseBody
+	@RequestMapping("/employee_list")
+	public PageResult list(EmployeeQueryOjbect qo) {
+		PageResult result = null;
+		result = employeeService.queryForPage(qo);
+		return result;
 	}
 
 	@ResponseBody

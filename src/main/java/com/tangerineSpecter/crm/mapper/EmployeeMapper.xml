@@ -11,6 +11,10 @@
     <result column="input_time" property="inputTime" jdbcType="DATE" />
     <result column="status" property="status" jdbcType="BIT" />
     <result column="admin" property="admin" jdbcType="BIT" />
+    <association property="dept" javaType="com.tangerineSpecter.crm.domain.Department" columnPrefix="d_">
+    	<id column="id" property="id"/>
+    	<result column="name" property="name"/>
+    </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from employee
@@ -50,5 +54,21 @@
   </select>
   <select id="getEmployeeForLogin" resultMap="BaseResultMap">
   	select * from employee where username = #{username} and password = #{password}
+  </select>
+  <sql id="where_sql"/>
+  <select id="queryForPage" resultMap="BaseResultMap">
+  	select e.id, e.username, e.realname, e.phone_number, e.email, e.input_time, e.status, e.admin,
+  	d.id as d_id, d.name as d_name
+  	from employee e
+  	left join department d
+  	on d.id = e.dept_id
+  	<include refid="where_sql"></include>
+  </select>
+  <select id="queryForPageCount" resultType="long">
+  	select Count(*) from employee
+  	<include refid="where_sql"></include>
+  	<if test="page!=null">
+  		limit #{start},#{rows}
+  	</if>
   </select>
 </mapper>

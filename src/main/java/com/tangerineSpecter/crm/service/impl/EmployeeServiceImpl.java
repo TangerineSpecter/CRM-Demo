@@ -1,5 +1,6 @@
 package com.tangerineSpecter.crm.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.tangerineSpecter.crm.domain.Employee;
 import com.tangerineSpecter.crm.mapper.EmployeeMapper;
+import com.tangerineSpecter.crm.page.PageResult;
+import com.tangerineSpecter.crm.query.EmployeeQueryOjbect;
 import com.tangerineSpecter.crm.service.IEmployeeService;
 
 @Service
@@ -43,6 +46,17 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public Employee getEmployeeForLogin(String username, String password) {
 		return employeeDao.getEmployeeForLogin(username, password);
+	}
+
+	@Override
+	public PageResult queryForPage(EmployeeQueryOjbect qo) {
+		// 查询总计的记录数
+		Long count = employeeDao.queryForPageCount(qo);
+		if (count == 0) {
+			return new PageResult(0, Collections.EMPTY_LIST);
+		}
+		List<Employee> result = employeeDao.queryForPage(qo);
+		return new PageResult(count.intValue(), result);
 	}
 
 }
