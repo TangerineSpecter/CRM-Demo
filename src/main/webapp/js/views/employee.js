@@ -49,9 +49,45 @@ $(function() {
 			width : 100
 		} ] ]
 	})
+
+	// 新增/编辑窗口
 	$("#emp_dialog").dialog({
 		width : 250,
 		height : 300,
-		buttons:"#emp_dialog_bt"
+		buttons : "#emp_dialog_bt",
+		closed : true
 	})
 })
+
+// 新增员工
+function add() {
+	$("#emp_dialog").dialog("open");
+	$("#emp_dialog").dialog("setTitle", "新增");
+	$("#emp_form").form("clear");
+}
+
+// 编辑员工
+function update() {
+	$("#emp_dialog").dialog("open");
+	$("#emp_dialog").dialog("setTitle", "编辑");
+}
+
+// 删除员工
+function del() {
+
+}
+
+// 刷新列表
+function refresh() {
+	$("#emp_datagrid").datagrid("reload");
+}
+
+// 保存提交
+function save() {
+
+}
+
+// 关闭窗口
+function cancel() {
+	$("#emp_dialog").dialog("close");
+}

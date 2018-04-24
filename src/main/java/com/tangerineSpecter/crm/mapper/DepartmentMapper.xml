@@ -37,4 +37,7 @@
 		select id, sn, name, manageer_id, parent_id, status
 		from department
 	</select>
+	<select id="queryForEmp" resultType="com.tangerineSpecter.crm.domain.Department">
+		select id,name from department
+	</select>
 </mapper>

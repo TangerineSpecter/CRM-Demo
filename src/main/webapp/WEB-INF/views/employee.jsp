@@ -12,14 +12,14 @@
 	<table id="emp_datagrid"></table>
 	<!-- 数据表格的顶部按钮 -->
 	<div id="emp_datagrid_tb">
-		<a class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>
-		<a class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
-		<a class="easyui-linkbutton" iconCls="icon-remove" plain="true">离职</a>
-		<a class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
+		<a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
+		<a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">编辑</a>
+		<a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="del()">离职</a>
+		<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="refresh()")>刷新</a>
 	</div>
 	<!-- 新增/更新员工窗口 -->
 	<div id="emp_dialog">
-		<form method="post">
+		<form id="emp_form" method="post">
 			<table align="center">
 				<tr>
 					<td>帐号</td>
@@ -40,7 +40,7 @@
 				<tr>
 					<td>部门</td>
 					<td><input type="text" name="department" class="easyui-combobox" 
-					data-options="valueField:'',textField:'',url:'/department_queryForEmp'"></td>
+					data-options="valueField:'id',textField:'name',url:'/department_queryForEmp'" editable="editable"></td>
 				</tr>
 				<tr>
 					<td>入职时间</td>
@@ -51,8 +51,8 @@
 	</div>
 	<!-- 窗口底部按钮 -->
 	<div id="emp_dialog_bt">
-		<a class="easyui-linkbutton" iconCls="icon-save">保存</a>
-		<a class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+		<a class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="save()">保存</a>
+		<a class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="cancel()">取消</a>
 	</div>
 </body>
 </html>

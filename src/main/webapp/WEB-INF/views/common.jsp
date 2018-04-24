@@ -3,4 +3,3 @@
 <script type="text/javascript" src="/js/jquery-easyui/jquery.min.js"></script> <!-- jQuery核心库 -->  
 <script type="text/javascript" src="/js/jquery-easyui/jquery.easyui.min.js"></script> <!-- EasyUI核心库 -->
 <script type="text/javascript" src="/js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script> <!-- EasyUI语言包 -->
-<script type="text/javascript" src="/js/jquery-easyui/base.js"></script> <!-- EasyUI核心库 -->

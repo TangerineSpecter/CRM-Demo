@@ -16,6 +16,11 @@ import com.tangerineSpecter.crm.query.EmployeeQueryOjbect;
 import com.tangerineSpecter.crm.service.IEmployeeService;
 import com.tangerineSpecter.crm.util.UserContext;
 
+/**
+ * 员工管理控制
+ * 
+ * @author 丢失的橘子
+ */
 @Controller
 public class EmployeeController {
 
@@ -27,6 +32,9 @@ public class EmployeeController {
 		return "employee";
 	}
 
+	/**
+	 * 员工管理列表
+	 */
 	@ResponseBody
 	@RequestMapping("/employee_list")
 	public PageResult list(EmployeeQueryOjbect qo) {
@@ -35,6 +43,9 @@ public class EmployeeController {
 		return result;
 	}
 
+	/**
+	 * 员工登录
+	 */
 	@ResponseBody
 	@RequestMapping("/login")
 	public Map<String, Object> login(String username, String password, HttpSession session) {
