@@ -2,10 +2,11 @@ $(function() {
 	$('#emp_datagrid').datagrid({
 		fit : true,
 		fitColumns : true,
+		url : '/employee_list',
 		rownumbers : true,
 		pagination : true,
 		toolbar : "#emp_datagrid_tb",
-		url : '/employee_list',
+		pageList : [ 10, 20, 30, 50, 100 ],
 		columns : [ [ {
 			field : 'username',
 			algin : 'center',
@@ -47,5 +48,10 @@ $(function() {
 			title : '是否超级管理员',
 			width : 100
 		} ] ]
+	})
+	$("#emp_dialog").dialog({
+		width : 250,
+		height : 300,
+		buttons:"#emp_dialog_bt"
 	})
 })

@@ -17,5 +17,42 @@
 		<a class="easyui-linkbutton" iconCls="icon-remove" plain="true">离职</a>
 		<a class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 	</div>
+	<!-- 新增/更新员工窗口 -->
+	<div id="emp_dialog">
+		<form method="post">
+			<table align="center">
+				<tr>
+					<td>帐号</td>
+					<td><input type="text" name="username"></td>
+				</tr>
+				<tr>
+					<td>真实姓名</td>
+					<td><input type="text" name="realname"></td>
+				</tr>
+				<tr>
+					<td>联系方式</td>
+					<td><input type="text" name="phoneNumber"></td>
+				</tr>
+				<tr>
+					<td>邮箱</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>部门</td>
+					<td><input type="text" name="department" class="easyui-combobox" 
+					data-options="valueField:'',textField:'',url:'/department_queryForEmp'"></td>
+				</tr>
+				<tr>
+					<td>入职时间</td>
+					<td><input type="text" name="inputTime" class="easyui-datebox"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 窗口底部按钮 -->
+	<div id="emp_dialog_bt">
+		<a class="easyui-linkbutton" iconCls="icon-save">保存</a>
+		<a class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+	</div>
 </body>
 </html>
