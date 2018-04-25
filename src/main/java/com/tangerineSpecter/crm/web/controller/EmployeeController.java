@@ -43,6 +43,25 @@ public class EmployeeController {
 		return result;
 	}
 
+	@ResponseBody
+	@RequestMapping("/employee_save")
+	public Map<String, Object> save(Employee emp) {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			emp.setPassword("123456");
+			emp.setAdmin(false);
+			emp.setStatus(true);
+			employeeService.insert(emp);
+			result.put("success", true);
+			result.put("msg", "保存成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("success", false);
+			result.put("msg", "保存异常");
+		}
+		return result;
+	}
+
 	/**
 	 * 员工登录
 	 */

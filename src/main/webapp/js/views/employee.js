@@ -31,7 +31,10 @@ $(function() {
 			field : 'dept',
 			algin : 'center',
 			title : '部门',
-			width : 100
+			width : 100,
+			formatter : function(value, row, index) {
+				return value ? value.name : "";
+			}
 		}, {
 			field : 'inputTime',
 			algin : 'center',
@@ -84,7 +87,22 @@ function refresh() {
 
 // 保存提交
 function save() {
-
+	$("#emp_form").form("submit", {
+		url : '/employee_save',
+		success : function(data) {
+			data = $.parseJSON(data);
+			if (data.success) {
+				$.messager.alert("提示", data.msg, "info", function() {
+					// 关闭对话框
+					$("#emp_dialog").dialog("close");
+					// 刷新页面
+					$("#emp_datagrid").datagrid("load");
+				});
+			} else {
+				$.messager.alert('提示', data.msg, "info");
+			}
+		}
+	})
 }
 
 // 关闭窗口

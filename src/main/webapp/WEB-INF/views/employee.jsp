@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<td>部门</td>
-					<td><input type="text" name="department" class="easyui-combobox" 
+					<td><input type="text" name="dept.id" class="easyui-combobox" 
 					data-options="valueField:'id',textField:'name',url:'/department_queryForEmp'" editable="editable"></td>
 				</tr>
 				<tr>
