@@ -8,6 +8,16 @@ $(function() {
 		toolbar : "#emp_datagrid_tb",
 		pageList : [ 10, 20, 30, 50, 100 ],
 		singleSelect : true,
+		onClickRow : function(rowIndex, rowData) {
+			if (rowData.status) {
+				$("#emp_datagrid_tb a").eq(1).linkbutton("enable");
+				$("#emp_datagrid_tb a").eq(2).linkbutton("enable");
+			} else {
+				// 禁用按钮
+				$("#emp_datagrid_tb a").eq(1).linkbutton("disable");
+				$("#emp_datagrid_tb a").eq(2).linkbutton("disable");
+			}
+		},
 		columns : [ [ {
 			field : 'username',
 			algin : 'center',
