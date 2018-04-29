@@ -21,6 +21,7 @@
 	<div id="emp_dialog">
 		<form id="emp_form" method="post">
 			<table align="center">
+				<input type="hidden" name="id"/>
 				<tr>
 					<td>帐号</td>
 					<td><input type="text" name="username"></td>

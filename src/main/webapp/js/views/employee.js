@@ -7,6 +7,7 @@ $(function() {
 		pagination : true,
 		toolbar : "#emp_datagrid_tb",
 		pageList : [ 10, 20, 30, 50, 100 ],
+		singleSelect : true,
 		columns : [ [ {
 			field : 'username',
 			algin : 'center',
@@ -44,12 +45,24 @@ $(function() {
 			field : 'status',
 			algin : 'center',
 			title : '状态',
-			width : 100
+			width : 100,
+			formatter : function(value, row, index) {
+				if (value) {
+					return "<font color='green'>正常</font>";
+				}
+				return "<font color='red'>离职</font>";
+			}
 		}, {
 			field : 'admin',
 			algin : 'center',
 			title : '是否超级管理员',
-			width : 100
+			width : 100,
+			formatter : function(value, row, index) {
+				if (value) {
+					return "是";
+				}
+				return "否";
+			}
 		} ] ]
 	})
 
@@ -71,8 +84,20 @@ function add() {
 
 // 编辑员工
 function update() {
-	$("#emp_dialog").dialog("open");
-	$("#emp_dialog").dialog("setTitle", "编辑");
+	// 获取选中的数据
+	var rowData = $("#emp_datagrid").datagrid("getSelected");
+	if (rowData) {
+		$("#emp_dialog").dialog("open");
+		$("#emp_dialog").dialog("setTitle", "编辑");
+		$("#emp_form").form("clear");
+		// 处理特殊属性
+		if (rowData.dept) {
+			rowData["dept.id"] = rowData.dept.id;
+		}
+		$("#emp_form").form("load", rowData);
+	} else {
+		$.messager.alert("温馨提示", "请选中一条需要编辑的数据！", "info");
+	}
 }
 
 // 删除员工
@@ -87,8 +112,15 @@ function refresh() {
 
 // 保存提交
 function save() {
+	var idVal = $("#emp_form [name='id']").val();
+	var url;
+	if (idVal) {
+		url = '/employee_update';
+	} else {
+		url = '/employee_save';
+	}
 	$("#emp_form").form("submit", {
-		url : '/employee_save',
+		url : url,
 		success : function(data) {
 			data = $.parseJSON(data);
 			if (data.success) {

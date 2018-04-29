@@ -32,13 +32,10 @@
     update employee
     set username = #{username},
       realname = #{realname},
-      password = #{password},
       phone_number = #{phoneNumber},
       email = #{email},
       dept_id = #{dept.id},
-      input_time = #{inputTime},
-      status = #{status},
-      admin = #{admin}
+      input_time = #{inputTime}
     where id = #{id}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >

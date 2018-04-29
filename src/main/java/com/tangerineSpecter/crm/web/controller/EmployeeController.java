@@ -43,6 +43,9 @@ public class EmployeeController {
 		return result;
 	}
 
+	/**
+	 * 新增员工
+	 */
 	@ResponseBody
 	@RequestMapping("/employee_save")
 	public Map<String, Object> save(Employee emp) {
@@ -58,6 +61,25 @@ public class EmployeeController {
 			e.printStackTrace();
 			result.put("success", false);
 			result.put("msg", "保存异常");
+		}
+		return result;
+	}
+
+	/**
+	 * 修改员工
+	 */
+	@ResponseBody
+	@RequestMapping("/employee_update")
+	public Map<String, Object> update(Employee emp) {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			employeeService.updateByPrimaryKey(emp);
+			result.put("success", true);
+			result.put("msg", "更新成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("success", false);
+			result.put("msg", "更新异常");
 		}
 		return result;
 	}
