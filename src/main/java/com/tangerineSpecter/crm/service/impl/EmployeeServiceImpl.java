@@ -59,4 +59,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return new PageResult(count.intValue(), result);
 	}
 
+	@Override
+	public void updateStatus(Long id) {
+		employeeDao.updateStatus(id);
+	}
+
 }

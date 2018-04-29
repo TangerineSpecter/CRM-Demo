@@ -85,6 +85,25 @@ public class EmployeeController {
 	}
 
 	/**
+	 * 删除员工
+	 */
+	@ResponseBody
+	@RequestMapping("/employee_delete")
+	public Map<String, Object> delete(Long id) {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			employeeService.updateStatus(id);
+			result.put("success", true);
+			result.put("msg", "更新成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("success", false);
+			result.put("msg", "更新异常");
+		}
+		return result;
+	}
+
+	/**
 	 * 员工登录
 	 */
 	@ResponseBody

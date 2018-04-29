@@ -68,4 +68,7 @@
   		limit #{start},#{rows}
   	</if>
   </select>
+  <update id="updateStatus" parameterType="long">
+  	update employee set status = 0 where id = #{id}
+  </update>
 </mapper>

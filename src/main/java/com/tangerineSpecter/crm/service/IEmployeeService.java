@@ -21,4 +21,6 @@ public interface IEmployeeService {
 
 	PageResult queryForPage(EmployeeQueryOjbect qo);
 
+	void updateStatus(Long id);
+
 }

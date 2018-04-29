@@ -100,9 +100,26 @@ function update() {
 	}
 }
 
-// 删除员工
+// 员工离职
 function del() {
-
+	// 获取选中的数据
+	var rowData = $("#emp_datagrid").datagrid("getSelected");
+	if (rowData) {
+		$.messager.confirm("温馨提示", "您确定需要离职这个员工吗？", function(yes) {
+			if (yes) {
+				$.get("/employee_delete?id=" + rowData.id, function(data) {
+					if (data.success) {
+						// 刷新数据表格
+						$("#emp_datagrid").datagrid("reload");
+					} else {
+						$.messager.alert("温馨提示", data.msg, "info");
+					}
+				}, "JSON");
+			}
+		});
+	} else {
+		$.messager.alert("温馨提示", "请选中需要离职的员工！", "info");
+	}
 }
 
 // 刷新列表
