@@ -12,10 +12,17 @@
 	<table id="emp_datagrid"></table>
 	<!-- 数据表格的顶部按钮 -->
 	<div id="emp_datagrid_tb">
-		<a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
-		<a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">编辑</a>
-		<a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="del()">离职</a>
-		<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="refresh()")>刷新</a>
+		<div>
+			<a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
+			<a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">编辑</a>
+			<a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="del()">离职</a>
+			<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="refresh()")>刷新</a>
+		</div>
+		<div>
+			关键字查询：<input name="keyWord" />
+			<a class="easyui-linkbutton" iconCls="icon-search" onclick="searchBtn()">搜索</a>
+			<a class="easyui-linkbutton" iconCls="icon-search" onclick="cleanBtn()">清空</a>
+		</div>
 	</div>
 	<!-- 新增/更新员工窗口 -->
 	<div id="emp_dialog">

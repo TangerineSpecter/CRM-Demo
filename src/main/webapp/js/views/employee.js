@@ -168,3 +168,19 @@ function save() {
 function cancel() {
 	$("#emp_dialog").dialog("close");
 }
+
+// 搜索框
+function searchBtn() {
+	var keyWord = $("[name='keyWord']").val();
+	$("#emp_datagrid").datagrid("load", {
+		keyWord : keyWord
+	});
+}
+
+// 清空搜索框
+function cleanBtn() {
+	$("[name='keyWord']").val('');
+	$("#emp_datagrid").datagrid("load", {
+		keyWord : ''
+	});
+}

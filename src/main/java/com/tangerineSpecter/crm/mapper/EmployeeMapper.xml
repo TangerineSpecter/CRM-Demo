@@ -52,7 +52,17 @@
   <select id="getEmployeeForLogin" resultMap="BaseResultMap">
   	select * from employee where username = #{username} and password = #{password}
   </select>
-  <sql id="where_sql"/>
+  <sql id="where_sql">
+  	<where>
+	  	<if test="keyWord!=null">
+	  		(
+	  			username like concat('%',#{keyWord},'%') 
+	  			or realname like concat('%',#{keyWord},'%') 
+	  			or phone_number like concat('%',#{keyWord},'%') 
+	  		)
+	  	</if>
+  	</where>
+  </sql>
   <select id="queryForPage" resultMap="BaseResultMap">
   	select e.id, e.username, e.realname, e.phone_number, e.email, e.input_time, e.status, e.admin,
   	d.id as d_id, d.name as d_name
