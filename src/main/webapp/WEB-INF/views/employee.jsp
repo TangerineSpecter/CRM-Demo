@@ -13,15 +13,15 @@
 	<!-- 数据表格的顶部按钮 -->
 	<div id="emp_datagrid_tb">
 		<div>
-			<a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
-			<a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="update()">编辑</a>
-			<a class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="del()">离职</a>
-			<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="refresh()")>刷新</a>
+			<a class="easyui-linkbutton" iconCls="icon-add" plain="true" data-cmd="add">新增</a>
+			<a id="emp_datagrid_edit" class="easyui-linkbutton" iconCls="icon-edit" plain="true" data-cmd="update">编辑</a>
+			<a id="emp_datagrid_del" class="easyui-linkbutton" iconCls="icon-remove" plain="true" data-cmd="del">离职</a>
+			<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh")>刷新</a>
 		</div>
 		<div>
 			关键字查询：<input name="keyWord" />
-			<a class="easyui-linkbutton" iconCls="icon-search" onclick="searchBtn()">搜索</a>
-			<a class="easyui-linkbutton" iconCls="icon-search" onclick="cleanBtn()">清空</a>
+			<a class="easyui-linkbutton" iconCls="icon-search" data-cmd="searchBtn">搜索</a>
+			<a class="easyui-linkbutton" iconCls="icon-search" data-cmd="cleanBtn">清空</a>
 		</div>
 	</div>
 	<!-- 新增/更新员工窗口 -->
@@ -59,8 +59,8 @@
 	</div>
 	<!-- 窗口底部按钮 -->
 	<div id="emp_dialog_bt">
-		<a class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="save()">保存</a>
-		<a class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="cancel()">取消</a>
+		<a class="easyui-linkbutton" iconCls="icon-save" plain="true" data-cmd="save">保存</a>
+		<a class="easyui-linkbutton" iconCls="icon-cancel" plain="true" data-cmd="cancel">取消</a>
 	</div>
 </body>
 </html>
