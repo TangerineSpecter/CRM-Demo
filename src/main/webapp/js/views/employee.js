@@ -187,7 +187,6 @@ $(function() {
 	// 对所有按钮进行监听
 	$("a[data-cmd]").on("click", function() {
 		var cmd = $(this).data("cmd");
-		console.log(cmd)
 		if (cmd) {
 			cmdObj[cmd]();
 		}
