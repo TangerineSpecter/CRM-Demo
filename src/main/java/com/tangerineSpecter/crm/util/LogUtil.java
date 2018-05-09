@@ -28,7 +28,6 @@ public class LogUtil {
 		// 通过session获取当前用户
 		Employee currentUser = (Employee) request.getSession().getAttribute(UserContext.USER_IN_SESSION);
 		String ip = request.getRemoteAddr();
-		System.out.println(ip);
 		Log log = new Log();
 		log.setOptime(new Date());
 		log.setOpid(ip);

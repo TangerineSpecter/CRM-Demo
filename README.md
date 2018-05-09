@@ -32,10 +32,18 @@
 ### 2.Maven运行项目
 ```
 配置指令：tomcat7:run(根据tomcat版本而定)
+```
 
 ### 3.集成lombok插件
+```
 执行resources/lib目录中的lombok-1.16.6.jar对IDE做集成
 ```
+
+### 4.数据库结构搭建
+```
+执行resources中的crm.sql进行数据库表结构搭建
+```
+
 ## 关于
 ```
 本项目主要目的用于技术上的学习和交流。
