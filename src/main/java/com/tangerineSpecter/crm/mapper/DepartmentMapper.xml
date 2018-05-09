@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tangerineSpecter.crm.mapper.DepartmentMapper">
-  <resultMap id="BaseResultMap" type="com.tangerineSpecter.crm.domain.Department">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="sn" jdbcType="VARCHAR" property="sn" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="manageer_id" jdbcType="BIGINT" property="manageerId" />
-    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
-    <result column="status" jdbcType="BIT" property="status" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from department
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyProperty="id" parameterType="com.tangerineSpecter.crm.domain.Department" useGeneratedKeys="true">
-    insert into department (sn, name, manageer_id, 
-      parent_id, status)
-    values (#{sn,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{manageerId,jdbcType=BIGINT}, 
-      #{parentId,jdbcType=BIGINT}, #{status,jdbcType=BIT})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.tangerineSpecter.crm.domain.Department">
-    update department
-    set sn = #{sn,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      manageer_id = #{manageerId,jdbcType=BIGINT},
-      parent_id = #{parentId,jdbcType=BIGINT},
-      status = #{status,jdbcType=BIT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, sn, name, manageer_id, parent_id, status
-    from department
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, sn, name, manageer_id, parent_id, status
-    from department
-  </select>
 	<resultMap id="BaseResultMap" type="com.tangerineSpecter.crm.domain.Department">
 		<id column="id" jdbcType="BIGINT" property="id" />
 		<result column="sn" jdbcType="VARCHAR" property="sn" />

@@ -39,10 +39,14 @@
 			<tx:method name="*"/>
 		</tx:attributes>
 		</tx:advice>
+		<bean id="logUtil" class="com.tangerineSpecter.crm.util.LogUtil"></bean>
 		<!-- aop配置 -->
 		<aop:config>
 			<aop:pointcut expression="execution(* com.tangerineSpecter.crm.service.*Service.*(..))" id="crudPointCut"/>
 			<aop:advisor advice-ref="advice" pointcut-ref="crudPointCut"/>
+			<aop:aspect ref="logUtil">
+				<aop:after method="writeLog" pointcut="execution(* com.tangerineSpecter.crm.service.*Service.*(..))"/>
+			</aop:aspect>
 		</aop:config>
 		<!-- 开启注解扫描
 		<context:component-scan base-package="com.tangerineSpecter.crm"/> -->

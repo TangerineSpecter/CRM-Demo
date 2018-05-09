@@ -1,6 +1,6 @@
 package com.tangerineSpecter.crm.web.controller;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,10 +98,11 @@ public class EmployeeController {
 	 */
 	@ResponseBody
 	@RequestMapping("/login")
-	public AjaxResult login(String username, String password, HttpSession session) {
+	public AjaxResult login(String username, String password, HttpServletRequest request) {
+		UserContext.set(request);
 		Employee currentUser = employeeService.getEmployeeForLogin(username, password);
 		if (currentUser != null) {
-			session.setAttribute(UserContext.USER_IN_SESSION, currentUser);
+			request.getSession().setAttribute(UserContext.USER_IN_SESSION, currentUser);
 			result = new AjaxResult(true, "登陆成功");
 		} else {
 			result = new AjaxResult(false, "登陆失败");
