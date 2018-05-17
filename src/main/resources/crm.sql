@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-05-09 23:29:16
+Date: 2018-05-17 23:38:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,4 +61,39 @@ CREATE TABLE `log` (
   PRIMARY KEY (`id`),
   KEY `FK_emp` (`opUser_id`),
   CONSTRAINT `FK_emp` FOREIGN KEY (`opUser_id`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for permission
+-- ----------------------------
+DROP TABLE IF EXISTS `permission`;
+CREATE TABLE `permission` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `resource` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `sn` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for role_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `role_permission`;
+CREATE TABLE `role_permission` (
+  `r_id` bigint(20) NOT NULL,
+  `p_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`r_id`),
+  KEY `FK_permission` (`p_id`),
+  CONSTRAINT `FK_permission` FOREIGN KEY (`p_id`) REFERENCES `permission` (`id`),
+  CONSTRAINT `FK_role` FOREIGN KEY (`r_id`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
