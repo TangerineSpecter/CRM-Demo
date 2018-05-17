@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tangerineSpecter.crm.domain.Employee;
 import com.tangerineSpecter.crm.page.PageResult;
-import com.tangerineSpecter.crm.query.EmployeeQueryOjbect;
+import com.tangerineSpecter.crm.query.EmployeeQueryObject;
 
 public interface IEmployeeService {
     int deleteByPrimaryKey(Long id);
@@ -19,7 +19,7 @@ public interface IEmployeeService {
 
 	Employee getEmployeeForLogin(String username, String password);
 
-	PageResult queryForPage(EmployeeQueryOjbect qo);
+	PageResult queryForPage(EmployeeQueryObject qo);
 
 	void updateStatus(Long id);
 

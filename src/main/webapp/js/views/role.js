@@ -49,6 +49,7 @@ $(function() {
 		width : 300,
 		height : 300,
 		title : "所有的权限",
+		url : '/permission_list',
 		fitColumns : true,
 		rownumbers : true,
 		pagination : true,

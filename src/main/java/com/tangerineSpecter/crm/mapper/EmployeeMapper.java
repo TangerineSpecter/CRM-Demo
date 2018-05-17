@@ -1,7 +1,7 @@
 package com.tangerineSpecter.crm.mapper;
 
 import com.tangerineSpecter.crm.domain.Employee;
-import com.tangerineSpecter.crm.query.EmployeeQueryOjbect;
+import com.tangerineSpecter.crm.query.EmployeeQueryObject;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ public interface EmployeeMapper {
 
 	Employee getEmployeeForLogin(@Param("username") String username, @Param("password") String password);
 
-	List<Employee> queryForPage(EmployeeQueryOjbect qo);
+	List<Employee> queryForPage(EmployeeQueryObject qo);
 
-	Long queryForPageCount(EmployeeQueryOjbect qo);
+	Long queryForPageCount(EmployeeQueryObject qo);
 
 	void updateStatus(Long id);
 }

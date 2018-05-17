@@ -29,4 +29,16 @@
     select id, name, resource
     from permission
   </select>
+  <sql id="where_sql"></sql>
+  <select id="queryPageCount" resultType="long">
+  	select count(*) from permission
+  	<include refid="where_sql" />
+  </select>
+  <select id="queryPage" resultMap="BaseResultMap">
+  	select id,name,resource from permission
+  	<include refid="where_sql" />
+  	<if test="page!=null">
+  		limit #{start},#{rows}
+  	</if>
+  </select>
 </mapper>
