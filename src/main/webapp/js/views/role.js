@@ -53,6 +53,27 @@ $(function() {
 		fitColumns : true,
 		rownumbers : true,
 		pagination : true,
+		singleSelect : true,
+		onDblClickRow : function(rowIndex, rowData) {
+			// 判断selfPermissions是否有这条记录
+			var rows = selfPermissions.datagrid("getRows");
+			var flag = true;
+			var index = -1;
+			for (var i = 0; i < rows.length; i++) {
+				if (rows[i].id == rowData.id) {
+					// 已存在
+					flag = false;
+					index = i;
+					break;
+				}
+			}
+			if (flag) {
+				// 拿到selfPermissions
+				selfPermissions.datagrid("appendRow", rowData);
+			} else {
+				selfPermissions.datagrid("selectRow", index);
+			}
+		},
 		columns : [ [ {
 			title : "权限名",
 			field : "name",
@@ -74,6 +95,7 @@ $(function() {
 		title : "已有的权限",
 		fitColumns : true,
 		rownumbers : true,
+		singleSelect : true,
 		columns : [ [ {
 			title : "权限名",
 			field : "name",
