@@ -96,6 +96,9 @@ $(function() {
 		fitColumns : true,
 		rownumbers : true,
 		singleSelect : true,
+		onDblClickRow : function(rowIndex, rowData) {
+			selfPermissions.datagrid("deleteRow", rowIndex);
+		},
 		columns : [ [ {
 			title : "权限名",
 			field : "name",
