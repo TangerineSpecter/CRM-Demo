@@ -14,6 +14,9 @@
     insert into role (name, sn)
     values (#{name,jdbcType=VARCHAR}, #{sn,jdbcType=VARCHAR})
   </insert>
+  <insert id="insertRelation">
+  	insert into role_permission (r_id,p_id) values (#{rid},#{pid})
+  </insert>
   <update id="updateByPrimaryKey" parameterType="com.tangerineSpecter.crm.domain.Role" >
     update role
     set name = #{name,jdbcType=VARCHAR},

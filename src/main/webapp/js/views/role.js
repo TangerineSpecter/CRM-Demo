@@ -10,7 +10,7 @@ $(function() {
 	roleDatagrid.datagrid({
 		fit : true,
 		fitColumns : true,
-		url : '/roleloyee_list',
+		url : '/role_list',
 		rownumbers : true,
 		pagination : true,
 		toolbar : "#role_datagrid_tb",
@@ -139,8 +139,7 @@ $(function() {
 			if (rowData) {
 				$.messager.confirm("温馨提示", "您确定需要离职这个员工吗？", function(yes) {
 					if (yes) {
-						$.get("/roleloyee_delete?id=" + rowData.id, function(
-								data) {
+						$.get("/role_delete?id=" + rowData.id, function(data) {
 							if (data.success) {
 								// 刷新数据表格
 								roleDatagrid.datagrid("reload");
@@ -163,12 +162,19 @@ $(function() {
 			var idVal = roleFormId.val();
 			var url;
 			if (idVal) {
-				url = '/roleloyee_update';
+				url = '/role_update';
 			} else {
-				url = '/roleloyee_save';
+				url = '/role_save';
 			}
 			roleForm.form("submit", {
 				url : url,
+				// 给表单添加额外参数
+				onSubmit : function(param) {
+					var rows = selfPermissions.datagrid("getRows");
+					for (var i = 0; i < rows.length; i++) {
+						param["permissions[" + i + "].id"] = rows[i].id;
+					}
+				},
 				success : function(data) {
 					data = $.parseJSON(data);
 					if (data.success) {
