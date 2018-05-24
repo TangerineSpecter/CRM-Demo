@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tangerineSpecter.crm.domain.Role;
+import com.tangerineSpecter.crm.page.PageResult;
+import com.tangerineSpecter.crm.query.RoleQueryObject;
 import com.tangerineSpecter.crm.service.IRoleService;
 import com.tangerineSpecter.crm.util.AjaxResult;
 
@@ -21,6 +23,12 @@ public class RoleController {
 	@Autowired
 	private IRoleService roleService;
 
+	/**
+	 * 角色权限保存
+	 * 
+	 * @param role
+	 * @return
+	 */
 	@RequestMapping("/role_save")
 	@ResponseBody
 	public AjaxResult save(Role role) {
@@ -31,6 +39,14 @@ public class RoleController {
 		} catch (Exception e) {
 			result = new AjaxResult("保存异常，请联系管理员");
 		}
+		return result;
+	}
+
+	@RequestMapping("/role_list")
+	@ResponseBody
+	public PageResult list(RoleQueryObject qo) {
+		PageResult result = null;
+		result = roleService.queryForPage(qo);
 		return result;
 	}
 

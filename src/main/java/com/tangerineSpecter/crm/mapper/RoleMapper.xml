@@ -32,4 +32,13 @@
     select id, name, sn
     from role
   </select>
+  <select id="queryPage" resultMap="BaseResultMap">
+  	select * from role
+  	<if test="page!=null">
+  		limit #{start},#{rows}
+  	</if>
+  </select>
+  <select id="queryPageCount" resultType="Long">
+  	select Count(*) from role
+  </select>
 </mapper>

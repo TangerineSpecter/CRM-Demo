@@ -1,5 +1,6 @@
 package com.tangerineSpecter.crm.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,12 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Override
 	public PageResult queryForPage(RoleQueryObject qo) {
-		// // 查询总计的记录数
-		// Long count = roleDao.queryPageCount(qo);
-		// if (count == 0) {
-		// return new PageResult(0, Collections.EMPTY_LIST);
-		// }
-		// List<Role> result = roleDao.queryPage(qo);
-		// return new PageResult(count.intValue(), result);
-		return null;
+		// 查询总计的记录数
+		Long count = roleDao.queryPageCount(qo);
+		if (count == 0) {
+			return new PageResult(0, Collections.EMPTY_LIST);
+		}
+		List<Role> result = roleDao.queryPage(qo);
+		return new PageResult(count.intValue(), result);
 	}
 }
