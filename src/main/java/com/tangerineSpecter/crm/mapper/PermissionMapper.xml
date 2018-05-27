@@ -29,7 +29,13 @@
     select id, name, resource
     from permission
   </select>
-  <sql id="where_sql"></sql>
+  <sql id="where_sql">
+  	<where>
+  		<if test="rid!=null">
+  			id in (select p_id from role_permission where r_id=#{rid})
+  		</if>
+  	</where>
+  </sql>
   <select id="queryPageCount" resultType="long">
   	select count(*) from permission
   	<include refid="where_sql" />

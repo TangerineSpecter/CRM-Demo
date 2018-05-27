@@ -1,5 +1,10 @@
 package com.tangerineSpecter.crm.query;
 
-public class PermissionQueryObject extends QueryObject {
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+public class PermissionQueryObject extends QueryObject {
+	private Long rid;
 }

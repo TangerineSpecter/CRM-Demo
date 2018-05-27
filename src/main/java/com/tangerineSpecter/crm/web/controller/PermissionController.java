@@ -21,4 +21,12 @@ public class PermissionController {
 		result = permissionService.queryForPage(qo);
 		return result;
 	}
+
+	@RequestMapping("/permission_queryByRid")
+	@ResponseBody
+	public PageResult queryByRid(PermissionQueryObject qo) {
+		PageResult result = null;
+		result = permissionService.queryForPage(qo);
+		return result;
+	}
 }

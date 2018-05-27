@@ -16,24 +16,16 @@ $(function() {
 		toolbar : "#role_datagrid_tb",
 		pageList : [ 10, 20, 30, 50, 100 ],
 		singleSelect : true,
-		onClickRow : function(rowIndex, rowData) {
-			if (rowData.status) {
-				roleDatagridEditAndDel.linkbutton("enable");
-			} else {
-				// 禁用按钮
-				roleDatagridEditAndDel.linkbutton("disable");
-			}
-		},
 		columns : [ [ {
-			field : 'sn',
-			algin : 'center',
 			title : '角色编号',
-			width : 100
+			field : 'sn',
+			width : 100,
+			align : 'center'
 		}, {
-			field : 'name',
-			algin : 'center',
 			title : '角色名称',
-			width : 100
+			field : 'name',
+			width : 100,
+			align : 'center'
 		} ] ]
 	})
 
@@ -80,14 +72,14 @@ $(function() {
 			width : 1,
 			align : "center"
 		} ] ]
-	})
+	});
 
-	var pager = allPermissions.datagrid("getPager");
-	pager.pagination({
+	var allPager = allPermissions.datagrid("getPager");
+	allPager.pagination({
 		showPageList : false,
 		showRefresh : false,
 		displayMsg : ''
-	})
+	});
 
 	selfPermissions.datagrid({
 		width : 300,
@@ -95,6 +87,7 @@ $(function() {
 		title : "已有的权限",
 		fitColumns : true,
 		rownumbers : true,
+		pagination : true,
 		singleSelect : true,
 		onDblClickRow : function(rowIndex, rowData) {
 			selfPermissions.datagrid("deleteRow", rowIndex);
@@ -105,7 +98,14 @@ $(function() {
 			width : 1,
 			align : "center"
 		} ] ]
-	})
+	});
+	
+	var selfPager = selfPermissions.datagrid("getPager");
+	selfPager.pagination({
+		showPageList : false,
+		showRefresh : false,
+		displayMsg : ''
+	});
 
 	// 统计方法管理
 	var cmdObj = {
@@ -127,6 +127,12 @@ $(function() {
 				if (rowData.dept) {
 					rowData["dept.id"] = rowData.dept.id;
 				}
+				// 需要查询该角色的权限
+				var options = selfPermissions.datagrid("options");
+				options.url = "/permission_queryByRid";
+				selfPermissions.datagrid("load", {
+					rid : rowData.id
+				});
 				roleForm.form("load", rowData);
 			} else {
 				$.messager.alert("温馨提示", "请选中一条需要编辑的数据！", "info");
