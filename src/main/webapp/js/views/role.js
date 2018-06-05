@@ -99,7 +99,7 @@ $(function() {
 			align : "center"
 		} ] ]
 	});
-	
+
 	var selfPager = selfPermissions.datagrid("getPager");
 	selfPager.pagination({
 		showPageList : false,
@@ -113,7 +113,7 @@ $(function() {
 		add : function() {
 			roleDialog.dialog("open");
 			roleDialog.dialog("setTitle", "新增");
-			roleForm.form("clear");
+			$("[name='id'],[name='sn'],[name='name']").val("");
 		},
 		// 编辑员工
 		update : function() {
@@ -122,7 +122,7 @@ $(function() {
 			if (rowData) {
 				roleDialog.dialog("open");
 				roleDialog.dialog("setTitle", "编辑");
-				roleForm.form("clear");
+				$("[name='id'],[name='sn'],[name='name']").val("");
 				// 处理特殊属性
 				if (rowData.dept) {
 					rowData["dept.id"] = rowData.dept.id;
