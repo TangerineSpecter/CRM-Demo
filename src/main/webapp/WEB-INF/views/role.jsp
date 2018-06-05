@@ -15,7 +15,7 @@
 		<div>
 			<a class="easyui-linkbutton" iconCls="icon-add" plain="true" data-cmd="add">新增</a>
 			<a id="role_datagrid_edit" class="easyui-linkbutton" iconCls="icon-edit" plain="true" data-cmd="update">编辑</a>
-			<a id="role_datagrid_del" class="easyui-linkbutton" iconCls="icon-remove" plain="true" data-cmd="del">离职</a>
+			<a id="role_datagrid_del" class="easyui-linkbutton" iconCls="icon-remove" plain="true" data-cmd="del">移除</a>
 			<a class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh")>刷新</a>
 		</div>
 		<div>

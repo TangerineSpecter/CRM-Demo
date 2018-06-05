@@ -21,7 +21,10 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Override
 	public int deleteByPrimaryKey(Long id) {
-		return roleDao.deleteByPrimaryKey(id);
+		// 删除关系
+		roleDao.deleteByPrimaryByRid(id);
+		int effectCount = roleDao.deleteByPrimaryKey(id);
+		return effectCount;
 	}
 
 	@Override

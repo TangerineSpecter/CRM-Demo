@@ -138,12 +138,12 @@ $(function() {
 				$.messager.alert("温馨提示", "请选中一条需要编辑的数据！", "info");
 			}
 		},
-		// 员工离职
+		// 角色移除
 		del : function() {
 			// 获取选中的数据
 			var rowData = roleDatagrid.datagrid("getSelected");
 			if (rowData) {
-				$.messager.confirm("温馨提示", "您确定需要离职这个员工吗？", function(yes) {
+				$.messager.confirm("温馨提示", "您确定需要移除这个角色吗？", function(yes) {
 					if (yes) {
 						$.get("/role_delete?id=" + rowData.id, function(data) {
 							if (data.success) {

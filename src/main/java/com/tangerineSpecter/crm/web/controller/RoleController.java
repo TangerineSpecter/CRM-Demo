@@ -43,7 +43,7 @@ public class RoleController {
 	}
 
 	/**
-	 * 角色权限保存
+	 * 角色权限更新
 	 * 
 	 * @param role
 	 * @return
@@ -56,7 +56,26 @@ public class RoleController {
 			roleService.updateByPrimaryKey(role);
 			result = new AjaxResult(true, "更新成功");
 		} catch (Exception e) {
-			result = new AjaxResult("保存异常，请联系管理员");
+			result = new AjaxResult("更新异常，请联系管理员");
+		}
+		return result;
+	}
+
+	/**
+	 * 角色移除
+	 * 
+	 * @param role
+	 * @return
+	 */
+	@RequestMapping("/role_delete")
+	@ResponseBody
+	public AjaxResult delete(Long id) {
+		AjaxResult result = null;
+		try {
+			roleService.deleteByPrimaryKey(id);
+			result = new AjaxResult(true, "移除成功");
+		} catch (Exception e) {
+			result = new AjaxResult("移除异常，请联系管理员");
 		}
 		return result;
 	}
