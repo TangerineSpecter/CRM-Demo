@@ -23,4 +23,6 @@ public interface RoleMapper {
 	List<Role> queryPage(RoleQueryObject qo);
 
 	Long queryPageCount(RoleQueryObject qo);
+
+	void deleteByPrimaryByRid(Long id);
 }

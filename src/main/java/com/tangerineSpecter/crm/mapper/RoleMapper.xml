@@ -41,4 +41,7 @@
   <select id="queryPageCount" resultType="Long">
   	select Count(*) from role
   </select>
+  <delete id="deleteByPrimaryByRid">
+  	delete from role_permission where r_id = #{rid}
+  </delete>
 </mapper>

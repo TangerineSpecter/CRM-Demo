@@ -45,7 +45,14 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Override
 	public int updateByPrimaryKey(Role record) {
-		return roleDao.updateByPrimaryKey(record);
+		int effectCount = roleDao.updateByPrimaryKey(record);
+		// 删除以前的关系
+		roleDao.deleteByPrimaryByRid(record.getId());
+		// 添加新的关系
+		for (Permission p : record.getPermissions()) {
+			roleDao.insertRelation(record.getId(), p.getId());
+		}
+		return effectCount;
 	}
 
 	@Override

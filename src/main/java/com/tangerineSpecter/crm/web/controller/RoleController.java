@@ -42,6 +42,25 @@ public class RoleController {
 		return result;
 	}
 
+	/**
+	 * 角色权限保存
+	 * 
+	 * @param role
+	 * @return
+	 */
+	@RequestMapping("/role_update")
+	@ResponseBody
+	public AjaxResult update(Role role) {
+		AjaxResult result = null;
+		try {
+			roleService.updateByPrimaryKey(role);
+			result = new AjaxResult(true, "更新成功");
+		} catch (Exception e) {
+			result = new AjaxResult("保存异常，请联系管理员");
+		}
+		return result;
+	}
+
 	@RequestMapping("/role_list")
 	@ResponseBody
 	public PageResult list(RoleQueryObject qo) {
