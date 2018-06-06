@@ -3,5 +3,10 @@
 		"id":1,
 		"text":"员工管理",
 		"attributes":{"url":"/employee"}
+	},
+	{
+		"id":2,
+		"text":"权限管理",
+		"attributes":{"url":"/role"}
 	}
 ]
