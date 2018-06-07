@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-05-22 23:29:42
+Date: 2018-06-08 01:20:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,7 +61,7 @@ CREATE TABLE `log` (
   PRIMARY KEY (`id`),
   KEY `FK_emp` (`opUser_id`),
   CONSTRAINT `FK_emp` FOREIGN KEY (`opUser_id`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=411 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for permission
@@ -83,7 +83,7 @@ CREATE TABLE `role` (
   `name` varchar(100) DEFAULT NULL,
   `sn` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for role_permission
